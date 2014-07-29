@@ -2,17 +2,26 @@ module.exports = function (grunt) {
   //  Load all modules.
   require('load-grunt-tasks')(grunt, {pattern: ['grunt-contrib-*', 'grunt-*']});
 
-  // Setting Variables.
+  // Control variables
+    var app = {
+      // Refresh server if any of these files changes.
+      toReloadFiles : [
+        'public/index.htm',
+        'public/less/*.less',
+        'gruntfile.js'
+      ],
+      isLivereload : true
+    };
 
   // Settings.
   grunt.initConfig({
     express: {
       options: {
-        livereload: true,
-        nospawn: true // to reload express.
+        livereload: app.isLivereload,
+        nospawn: app.isLivereload // to reload express.
       },
       files: ['public/index.htm'],
-      tasks: ['express:dev', 'wait'],
+      tasks: ['express:dev'],
       dev: {
         options: {
           script: 'server.js',
@@ -27,7 +36,8 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      scripts: {
+      // compile less if any of the less files is changed.
+      less: {
         files: ['public/less/*.less'],
         tasks: ['less'],
         options: {
@@ -35,24 +45,17 @@ module.exports = function (grunt) {
         },
       },
       livereload: {
-        files: ['public/index.htm'],
+        files: app.toReloadFiles,
         options: {
-          livereload: true,
-          nospawn: true // to reload express.
+          livereload: app.isLivereload,
+          nospawn: app.isLivereload // to reload express.
         }
       },
-    },
-  });
-
-  // delay livereload...
-  grunt.registerTask('wait', function () {
-    grunt.log.ok('Server refreshing ...');
-    var done = this.async();
-    setTimeout(function () {
-      grunt.log.writeln('Done waiting!');done();
-    }, 250);
+    }
   });
 
   // Register Tasks
-  grunt.registerTask('serve', function() {grunt.task.run(['express:dev','wait','watch']);});
+  grunt.registerTask('serve', function() {grunt.task.run(
+    ['express:dev','watch']);
+  });
 };
