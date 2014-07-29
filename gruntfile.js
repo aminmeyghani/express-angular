@@ -8,7 +8,8 @@ module.exports = function (grunt) {
       toReloadFiles : [
         'public/index.htm',
         'public/less/*.less',
-        'gruntfile.js'
+        'public/js/*.js',
+        'gruntfile.js',
       ],
       isLivereload : true
     };

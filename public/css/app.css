@@ -1,3 +1,15 @@
 body {
-  background-color: #000000;
+  background-color: #ffffff;
+}
+.mytable {
+  width: 100%;
+  border-collapse: collapse;
+}
+.mytable td,
+.mytable th {
+  text-align: left;
+  padding: 3px 10px;
+}
+.mytable thead {
+  background-color: #e5e6e7;
 }

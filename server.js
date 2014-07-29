@@ -10,4 +10,4 @@ app.use(express.static(path.join(__dirname, rootPath)));
 
 // Set port.
 app.listen(port);
-console.log("Server running at port %d ...", port);
+console.log("Server listening on port %d ...", port);

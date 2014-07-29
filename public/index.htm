@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
 	<meta charset="UTF-8">
 	<title>test</title>
 	<script src="//localhost:35729/livereload.js"></script>
 	<link rel="stylesheet" href="css/app.css">
+	<script src="lib/angular-1.2.16/angular.js" ></script>
+	<script src="js/Main.js"></script>
 </head>
 <body>
-	<h1>bl</h1>
-	<p>tx</p>
-	<ul>
-		<li>1</li>
-	</ul>
+	<div ng-controller="Main">
+		<!-- <ul>
+			<li ng-repeat="u in users">
+				{{u.name}} <button ng-click="removeUser(u)" >Remove user</button>
+			</li>
+		</ul> -->
+		
+		<table class="mytable">
+		  <thead>
+		    <tr>
+		      <th>Name</th>
+		      <th>Age</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="u in users">
+		      <td>{{u.name}}</td>
+		      <td>{{u.age}}</td>
+		    </tr>
+		  </tbody>
+		</table>
+
+	</div>
 </body>
 </html>
