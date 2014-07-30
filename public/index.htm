@@ -1,35 +1,69 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="MainApp">
 <head>
 	<meta charset="UTF-8">
 	<title>test</title>
 	<script src="//localhost:35729/livereload.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap/bootstrap-3.2.0-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="css/app.css">
+	<script src="lib/jquery/jquery-2.0.3.js"></script>
 	<script src="lib/angular-1.2.16/angular.js" ></script>
+	<script src="lib/ui-bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 	<script src="js/Main.js"></script>
 </head>
 <body>
-	<div ng-controller="Main">
-		<!-- <ul>
-			<li ng-repeat="u in users">
-				{{u.name}} <button ng-click="removeUser(u)" >Remove user</button>
-			</li>
-		</ul> -->
-		
-		<table class="mytable">
-		  <thead>
-		    <tr>
-		      <th>Name</th>
-		      <th>Age</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr ng-repeat="u in users">
-		      <td>{{u.name}}</td>
-		      <td>{{u.age}}</td>
-		    </tr>
-		  </tbody>
-		</table>
+	<div ng-controller="HomeCtrl">
+		{{data}}
+	</div>
+	<!--  -->
+	<div ng-controller="DropdownCtrl">
+	    <!-- Simple dropdown -->
+	    <span class="dropdown" on-toggle="toggled(open)">
+	      <a href class="dropdown-toggle">
+	        Click me for a dropdown, yo!
+	      </a>
+	      <ul class="dropdown-menu">
+	        <li ng-repeat="choice in items">
+	          <a href>{{choice}}</a>
+	        </li>
+	      </ul>
+	    </span>
+
+	    <!-- Single button -->
+	    <div class="btn-group" dropdown is-open="status.isopen">
+	      <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+	        Button dropdown <span class="caret"></span>
+	      </button>
+	      <ul class="dropdown-menu" role="menu">
+	        <li><a href="#">Action</a></li>
+	        <li><a href="#">Another action</a></li>
+	        <li><a href="#">Something else here</a></li>
+	        <li class="divider"></li>
+	        <li><a href="#">Separated link</a></li>
+	      </ul>
+	    </div>
+
+	    <!-- Split button -->
+	    <div class="btn-group" dropdown>
+	      <button type="button" class="btn btn-danger">Action</button>
+	      <button type="button" class="btn btn-danger dropdown-toggle">
+	        <span class="caret"></span>
+	        <span class="sr-only">Split button!</span>
+	      </button>
+	      <ul class="dropdown-menu" role="menu">
+	        <li><a href="#">Action</a></li>
+	        <li><a href="#">Another action</a></li>
+	        <li><a href="#">Something else here</a></li>
+	        <li class="divider"></li>
+	        <li><a href="#">Separated link</a></li>
+	      </ul>
+	    </div>
+
+	    <hr />
+	    <p>
+	        <button type="button" class="btn btn-default btn-sm" ng-click="toggleDropdown($event)">Toggle button dropdown</button>
+	        <button type="button" class="btn btn-warning btn-sm" ng-click="disabled = !disabled">Enable/Disable</button>
+	    </p>
 
 	</div>
 </body>
