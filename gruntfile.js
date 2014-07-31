@@ -9,6 +9,8 @@ module.exports = function (grunt) {
         'public/index.htm',
         'public/less/*.less',
         'public/js/*.js',
+        'public/js/**/*.js',
+        'public/js/**/*.htm',
         'gruntfile.js',
       ],
       isLivereload : true
