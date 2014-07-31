@@ -1,4 +1,4 @@
-angular.module('MainApp', ['ui.bootstrap'])
+angular.module('MainApp', ['ui.bootstrap','Mod1'])
 .controller('HomeCtrl', ['$scope', function($scope) {
   $scope.data = "some data2";
 
